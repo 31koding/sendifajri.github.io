@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<title>sendifajri</title>
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">    
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/instafeed.min.js"></script>
+    <script src="js/.js"></script>
+</head>
+<body>
+    <div class="container">    
+        <nav class="navbar navbar-default"> 
+            <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#nav1" aria-expanded="false">  
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>             
+                    </button>
+                    <a class="navbar-brand" href="#" style="color: #f3f3f3;">SENDIFAJRI</a>                
+            </div>
+            <div class="collapse navbar-collapse" id="nav1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" style="color: #f3f3f3;">About</a></li>        
+                    <li><a href="#" style="color: #f3f3f3;">Profile</a></li>     
+                </ul>
+            </div>
+            </div>
+        </nav>
+    </div>
+    
+    <div id="kepala">        
+        <h1>SENDIFAJRI</h1>
+    </div>
+    <!------------->
+    <div class="container">
+        <h4 style="text-align:center;font-family: 'Megrim', cursive;">G A L L E R Y</h4>
+        <hr>
+        <div id="instafeed"></div>
+    </div>
+<!--------------badan--->
+    <div id="blog">
+        <div class="container">
+            <h3><b>BLOG</b></h3>
+            <div class="col-md-6">
+                <h3>Apa itu Sass</h3>
+                <p></p>
+            </div>
+            <div class="col-md-6">
+                <h3>Framework Codeigniter</h3>
+                <p></p>
+            </div>
+        </div>
+    </div>
+</body>
+    <script type="text/javascript">
+        
+        var userFeed = new Instafeed({
+            get: 'user',
+            userId: 205181486,
+            limit:8,    
+            accessToken:'205181486.1677ed0.2caba2485b854b89bffe1d8045c9ea15',
+            resolution:"standard_resolution",   
+              after: function () {
+                var images = $("#instafeed").find('a');
+                $.each(images, function(index, image) {
+                  var delay = (index * 75) + 'ms';
+                  $(image).css('-webkit-animation-delay', delay);
+                  $(image).css('-moz-animation-delay', delay);
+                  $(image).css('-ms-animation-delay', delay);
+                  $(image).css('-o-animation-delay', delay);
+                  $(image).css('animation-delay', delay);
+                  $(image).addClass('animated flipInX');
+                });
+              },
+              template: '<div class="col-md-3 col-sm-4"><div class="gambar"><a href="{{link}}" target="_blank"><img src="{{image}}" /><div class="likes">&hearts; {{likes}}</div></a></div></div>'
+            });
+            userFeed.run();
+</script>
+    
+</html>
